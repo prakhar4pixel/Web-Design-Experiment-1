@@ -1,46 +1,934 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohd Aatif | Developer Portfolio</title>
+  <title>Prakhar Singh | Full Stack Developer & Software Engineer</title>
+  <meta name="description" content="Portfolio of Prakhar Singh - Full Stack Developer specializing in React, Node.js, Cloud Architecture, with award-winning hackathon experience and verified industry certifications.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
-  <!-- Navigation Menu -->
-  <nav class="navbar">
-    <div class="logo">Mohd<span>Aatif</span></div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#contact">Contact</a></li>
+  <!-- Mobile Navigation Overlay & Drawer -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+      <div class="logo">Prakhar<span>.dev</span></div>
+      <button class="icon-btn close-drawer-btn" id="closeDrawerBtn" aria-label="Close Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#home" class="mobile-nav-link">Home</a></li>
+      <li><a href="#about" class="mobile-nav-link">About & Skills</a></li>
+      <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+      <li><a href="#hackathons" class="mobile-nav-link">Hackathons</a></li>
+      <li><a href="#certifications" class="mobile-nav-link">Certifications</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
     </ul>
-  </nav>
+    <div class="mobile-nav-footer">
+      <a href="#contact" class="btn btn-primary full-width">Hire Me</a>
+    </div>
+  </aside>
 
-  <!-- Hero Section -->
+  <!-- Sticky Navbar -->
+  <header>
+    <nav class="navbar" id="navbar">
+      <a href="#home" class="logo">
+        <span class="logo-bracket">&lt;</span>Prakhar<span class="logo-accent">.dev</span><span class="logo-bracket"> /&gt;</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#hackathons" class="nav-link">Hackathons</a></li>
+        <li><a href="#certifications" class="nav-link">Certifications</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- Action items: Theme toggle & CTA -->
+      <div class="nav-actions">
+        <button id="themeToggle" class="icon-btn theme-toggle-btn" aria-label="Toggle dark/light mode" title="Toggle Theme">
+          <!-- Sun Icon (for dark mode) -->
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Moon Icon (for light mode) -->
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="#contact" class="btn btn-outline nav-cta">Let's Talk</a>
+
+        <!-- Hamburger button for mobile -->
+        <button id="mobileMenuBtn" class="icon-btn mobile-menu-btn" aria-label="Open Navigation Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section with Canvas Particles -->
   <section id="home" class="hero">
-    <h1>Hi, I'm <span class="highlight">Mohd Aatif</span></h1>
-    <p>A Frontend Web Developer crafting simple, fast, and responsive websites.</p>
-    <a href="#contact" class="btn">Contact Me</a>
+    <canvas id="heroCanvas" class="hero-canvas"></canvas>
+    
+    <div class="hero-content">
+      <div class="badge status-badge">
+        <span class="pulsing-dot"></span> Available for Software Engineering Roles & Internships
+      </div>
+      
+      <h1 class="hero-title">
+        Building Scalable Web Products with <span class="gradient-text">Precision & Code</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        Hi, I'm <strong class="highlight-name">Prakhar Singh</strong> — a passionate Full Stack Developer & Software Engineer crafting high-performance, accessible, and intuitive digital experiences. Active hackathon competitor and cloud enthusiast.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#projects" class="btn btn-primary">
+          <span>Explore Projects</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="#hackathons" class="btn btn-secondary">
+          <span>Hackathon Wins</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        </a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+
+      <!-- Quick Social Icons -->
+      <div class="social-links-bar">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon-pill" title="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-pill" title="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto:prakharsingh.dev@gmail.com" class="social-icon-pill" title="Email Direct">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>Email</span>
+        </a>
+        <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" class="social-icon-pill" title="LeetCode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          <span>LeetCode</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Stats Grid -->
+    <div class="hero-stats-container">
+      <div class="stat-card">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Projects Built</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-card">
+        <span class="stat-number">3+</span>
+        <span class="stat-label">Hackathons Won / Finalist</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-card">
+        <span class="stat-number">4+</span>
+        <span class="stat-label">Industry Certifications</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-card">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">DSA Problems Solved</span>
+      </div>
+    </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <h2>Contact Me</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
+  <!-- About & Technical Skills Section -->
+  <section id="about" class="section">
+    <div class="section-header">
+      <span class="section-tag">Core Competencies</span>
+      <h2>About Me & Technical Skills</h2>
+      <p class="section-desc">A blend of computer science foundations, full-stack web engineering, and modern cloud architecture.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-bio-card">
+        <h3>Engineering with passion & precision</h3>
+        <p>
+          I am a Software Developer with an insatiable curiosity for architecting scalable applications that solve real-world problems. Whether building full-stack platforms, optimizing database pipelines, or creating zero-friction UI components, I focus on clean code, testability, and responsiveness.
+        </p>
+        <p>
+          Beyond day-to-day development, I actively participate in 24-to-48 hour hackathons where I thrive under pressure, rapidly converting complex problem statements into functional, high-impact prototypes.
+        </p>
+        
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Clean Architecture & RESTful APIs</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Modern Responsive & Accessible UI</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Cloud & Container Deployment (AWS, Docker)</span>
+          </div>
+          <div class="highlight-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Fast Prototyping & Agile Collaboration</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Categorized Cards -->
+      <div class="skills-categories-wrapper">
+        <!-- Frontend -->
+        <div class="skill-category-card">
+          <div class="category-header">
+            <div class="category-icon frontend-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <h4>Frontend Engineering</h4>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">JavaScript (ES6+)</span>
+            <span class="skill-tag">HTML5 & CSS3</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">Redux Toolkit</span>
+            <span class="skill-tag">Responsive Design</span>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="skill-category-card">
+          <div class="category-header">
+            <div class="category-icon backend-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            </div>
+            <h4>Backend & Databases</h4>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express.js</span>
+            <span class="skill-tag">Python (FastAPI)</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">RESTful APIs</span>
+            <span class="skill-tag">Prisma ORM</span>
+            <span class="skill-tag">Redis Caching</span>
+          </div>
+        </div>
+
+        <!-- DevOps & Tools -->
+        <div class="skill-category-card">
+          <div class="category-header">
+            <div class="category-icon tools-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </div>
+            <h4>DevOps & Tools</h4>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Git & GitHub</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">AWS (S3, EC2, Lambda)</span>
+            <span class="skill-tag">Linux / Bash</span>
+            <span class="skill-tag">Postman</span>
+            <span class="skill-tag">CI/CD Pipelines</span>
+            <span class="skill-tag">Vercel</span>
+            <span class="skill-tag">Jest / Testing</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- Featured Projects Section -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <span class="section-tag">Portfolio Showcase</span>
+      <h2>Featured Projects</h2>
+      <p class="section-desc">Production-grade web applications with a focus on performance, scalability, and UX design.</p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-controls">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+      <button class="filter-btn" data-filter="ai-cloud">AI & Cloud</button>
+      <button class="filter-btn" data-filter="web-tools">Web Apps</button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid" id="projectsGrid">
+      
+      <!-- Project 1 -->
+      <article class="project-card" data-category="fullstack">
+        <div class="project-header">
+          <div class="project-badge-row">
+            <span class="badge featured-badge">Featured</span>
+            <span class="project-type">Full Stack</span>
+          </div>
+          <h3 class="project-title">DevFlow — Collaborative Cloud Code Workspace</h3>
+        </div>
+        <p class="project-desc">
+          A real-time collaborative development platform featuring syntax-highlighted code editing, WebRTC video/voice channels, instant containerized code execution, and synced team whiteboard.
+        </p>
+        <div class="project-metrics">
+          <div class="metric-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            <span>&lt; 50ms sync latency with WebSockets</span>
+          </div>
+          <div class="metric-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <span>500+ active developer sessions</span>
+          </div>
+        </div>
+        <div class="project-tech-stack">
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">Socket.io</span>
+          <span class="tech-pill">Docker</span>
+          <span class="tech-pill">Tailwind CSS</span>
+          <span class="tech-pill">Redis</span>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <span>Source Code</span>
+          </a>
+          <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+            <span>Live Demo</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card" data-category="ai-cloud">
+        <div class="project-header">
+          <div class="project-badge-row">
+            <span class="badge ai-badge">AI Powered</span>
+            <span class="project-type">AI & Cloud</span>
+          </div>
+          <h3 class="project-title">MediScan AI — Smart Clinical Triage & Records</h3>
+        </div>
+        <p class="project-desc">
+          Intelligent medical triage system that evaluates patient symptom inputs, calculates triage severity scores, and arranges appointment slots with HIPAA-compliant encrypted record keeping.
+        </p>
+        <div class="project-metrics">
+          <div class="metric-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            <span>94.2% diagnostic match accuracy</span>
+          </div>
+          <div class="metric-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <span>1,200+ simulated health consultations</span>
+          </div>
+        </div>
+        <div class="project-tech-stack">
+          <span class="tech-pill">Next.js 14</span>
+          <span class="tech-pill">FastAPI</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">PostgreSQL</span>
+          <span class="tech-pill">AWS S3</span>
+          <span class="tech-pill">Prisma</span>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <span>Source Code</span>
+          </a>
+          <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+            <span>Live Demo</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card" data-category="fullstack">
+        <div class="project-header">
+          <div class="project-badge-row">
+            <span class="badge fin-badge">FinTech</span>
+            <span class="project-type">Full Stack</span>
+          </div>
+          <h3 class="project-title">FinTrack Pro — Analytics & Wealth Tracker</h3>
+        </div>
+        <p class="project-desc">
+          Modern personal finance & portfolio analytics platform featuring bank statement CSV parsing, dynamic budget forecasting, expense category breakdown, and multi-currency portfolio tracking.
+        </p>
+        <div class="project-metrics">
+          <div class="metric-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            <span>45% reduction in aggregation query time</span>
+          </div>
+          <div class="metric-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <span>Interactive Chart.js visualizations</span>
+          </div>
+        </div>
+        <div class="project-tech-stack">
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Express</span>
+          <span class="tech-pill">MongoDB</span>
+          <span class="tech-pill">Chart.js</span>
+          <span class="tech-pill">JWT Auth</span>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <span>Source Code</span>
+          </a>
+          <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+            <span>Live Demo</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card" data-category="web-tools">
+        <div class="project-header">
+          <div class="project-badge-row">
+            <span class="badge eco-badge">Green Tech</span>
+            <span class="project-type">Web App</span>
+          </div>
+          <h3 class="project-title">EcoTransit — Urban Carbon-Optimized Transit</h3>
+        </div>
+        <p class="project-desc">
+          Transit route computation engine that evaluates live multimodal urban transit options, comparing carbon footprint and commute duration to encourage sustainable city travel.
+        </p>
+        <div class="project-metrics">
+          <div class="metric-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            <span>28% average CO2 savings per commute</span>
+          </div>
+          <div class="metric-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <span>Mapbox API & GTFS Transit Data</span>
+          </div>
+        </div>
+        <div class="project-tech-stack">
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">Mapbox GL</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">Express</span>
+          <span class="tech-pill">OpenStreetMap</span>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <span>Source Code</span>
+          </a>
+          <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+            <span>Live Demo</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Hackathons Section -->
+  <section id="hackathons" class="section hackathons-section">
+    <div class="section-header">
+      <span class="section-tag">Competitions & Sprints</span>
+      <h2>Hackathon Highlights</h2>
+      <p class="section-desc">Fast-paced collaborative engineering under high-pressure deadlines, building innovative solutions that won awards.</p>
+    </div>
+
+    <div class="hackathons-timeline">
+      
+      <!-- Hackathon 1: Smart India Hackathon -->
+      <div class="hackathon-card featured-hackathon">
+        <div class="hackathon-badge-ribbon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>Grand Finalist</span>
+        </div>
+        
+        <div class="hackathon-header">
+          <div class="hackathon-title-group">
+            <span class="hackathon-date">36-Hour National Sprint • 2025</span>
+            <h3 class="hackathon-name">Smart India Hackathon (SIH)</h3>
+            <span class="hackathon-organizer">Ministry of Education & AICTE, Govt. of India</span>
+          </div>
+          <div class="hackathon-award-tag">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            <span>Top 5 National Finalist</span>
+          </div>
+        </div>
+
+        <div class="hackathon-body">
+          <div class="hackathon-project-meta">
+            <strong>Project Built:</strong> <span>CivicPulse — Automated Municipal Grievance Classification Engine</span>
+          </div>
+          <p class="hackathon-description">
+            Engineered an AI-backed citizen grievance sorting pipeline that ingests public issues, classifies departmental urgency using NLP, eliminates 90% duplicate submissions, and dispatches tickets to ward officers automatically.
+          </p>
+
+          <div class="hackathon-highlights-list">
+            <div class="h-highlight">
+              <span class="check-icon">✓</span>
+              <span><strong>Role:</strong> Lead Full-Stack Architect (Team of 6)</span>
+            </div>
+            <div class="h-highlight">
+              <span class="check-icon">✓</span>
+              <span><strong>Result:</strong> Pitched to a panel of government ministry evaluators and industry directors</span>
+            </div>
+            <div class="h-highlight">
+              <span class="check-icon">✓</span>
+              <span><strong>Impact:</strong> Tested with 10,000+ synthetic citizen grievance records with sub-second categorization</span>
+            </div>
+          </div>
+
+          <div class="hackathon-tags">
+            <span class="hack-pill">FastAPI</span>
+            <span class="hack-pill">React</span>
+            <span class="hack-pill">PostgreSQL</span>
+            <span class="hack-pill">NLP</span>
+            <span class="hack-pill">Docker</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hackathon 2: HackVerse -->
+      <div class="hackathon-card">
+        <div class="hackathon-badge-ribbon silver-ribbon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>1st Runner Up</span>
+        </div>
+
+        <div class="hackathon-header">
+          <div class="hackathon-title-group">
+            <span class="hackathon-date">36-Hour Hackathon • 2025</span>
+            <h3 class="hackathon-name">HackVerse National Hackathon</h3>
+            <span class="hackathon-organizer">FinTech & Web3 Track</span>
+          </div>
+          <div class="hackathon-award-tag runner-up">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            <span>1st Runner Up • $1,000 Award</span>
+          </div>
+        </div>
+
+        <div class="hackathon-body">
+          <div class="hackathon-project-meta">
+            <strong>Project Built:</strong> <span>CrediZKP — Privacy-Preserving MSME Invoice Financing</span>
+          </div>
+          <p class="hackathon-description">
+            Architected a decentralized invoice financing protocol enabling micro and small enterprises to prove creditworthiness and collateral without exposing sensitive supplier balance sheets using Zero-Knowledge proofs.
+          </p>
+
+          <div class="hackathon-highlights-list">
+            <div class="h-highlight">
+              <span class="check-icon">✓</span>
+              <span><strong>Role:</strong> Backend & API Integration Specialist (Team of 4)</span>
+            </div>
+            <div class="h-highlight">
+              <span class="check-icon">✓</span>
+              <span><strong>Outcome:</strong> Won 2nd prize among 180+ competing teams across top universities</span>
+            </div>
+          </div>
+
+          <div class="hackathon-tags">
+            <span class="hack-pill">Node.js</span>
+            <span class="hack-pill">TypeScript</span>
+            <span class="hack-pill">Next.js</span>
+            <span class="hack-pill">ZKP / Cryptography</span>
+            <span class="hack-pill">Tailwind</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hackathon 3: Devfolio HackCraft -->
+      <div class="hackathon-card">
+        <div class="hackathon-badge-ribbon bronze-ribbon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>Best Innovation</span>
+        </div>
+
+        <div class="hackathon-header">
+          <div class="hackathon-title-group">
+            <span class="hackathon-date">24-Hour Sprint • 2024</span>
+            <h3 class="hackathon-name">Devfolio HackCraft Invitational</h3>
+            <span class="hackathon-organizer">Accessibility & Assistive Tech Track</span>
+          </div>
+          <div class="hackathon-award-tag innovation">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            <span>Best Innovation Award</span>
+          </div>
+        </div>
+
+        <div class="hackathon-body">
+          <div class="hackathon-project-meta">
+            <strong>Project Built:</strong> <span>VocalDev — Hands-Free Voice Programming Extension</span>
+          </div>
+          <p class="hackathon-description">
+            Built an accessible browser extension using the Web Speech Recognition API and AST parsing to allow developers with motor impairments to dictate syntax-correct code and navigate IDE tabs seamlessly.
+          </p>
+
+          <div class="hackathon-highlights-list">
+            <div class="h-highlight">
+              <span class="check-icon">✓</span>
+              <span><strong>Role:</strong> Lead Frontend & Web Speech Integration Engineer</span>
+            </div>
+            <div class="h-highlight">
+              <span class="check-icon">✓</span>
+              <span><strong>Achievement:</strong> 9.8/10 accessibility jury rating; live audience demonstration</span>
+            </div>
+          </div>
+
+          <div class="hackathon-tags">
+            <span class="hack-pill">JavaScript</span>
+            <span class="hack-pill">Web Speech API</span>
+            <span class="hack-pill">Chrome Extensions</span>
+            <span class="hack-pill">CSS3</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Professional Certifications Section -->
+  <section id="certifications" class="section">
+    <div class="section-header">
+      <span class="section-tag">Credentials & Badges</span>
+      <h2>Professional Certifications</h2>
+      <p class="section-desc">Industry-recognized certifications validating core competencies in cloud, front-end architecture, and algorithms.</p>
+    </div>
+
+    <div class="certifications-grid">
+      
+      <!-- Cert 1: AWS -->
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon aws-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M12 12v9"></path><path d="m8 17 4 4 4-4"></path></svg>
+          </div>
+          <div class="cert-status-badge verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Verified</span>
+          </div>
+        </div>
+
+        <div class="cert-info">
+          <span class="cert-issuer">Amazon Web Services (AWS)</span>
+          <h3 class="cert-title">AWS Certified Cloud Practitioner</h3>
+          <p class="cert-date">Issued: 2025 • Credential ID: AWS-8942-CLF</p>
+          <p class="cert-summary">
+            Validates foundational expertise in cloud concepts, AWS security, core compute (EC2, Lambda), storage (S3), VPC networking, and pricing models.
+          </p>
+        </div>
+
+        <div class="cert-skills">
+          <span class="cert-skill-tag">Cloud Architecture</span>
+          <span class="cert-skill-tag">AWS IAM & Security</span>
+          <span class="cert-skill-tag">EC2 & S3</span>
+          <span class="cert-skill-tag">Serverless</span>
+        </div>
+
+        <div class="cert-footer">
+          <button class="btn btn-sm btn-outline verify-cert-btn" data-cert="aws">
+            <span>Verify Credential</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cert 2: Meta Front-End -->
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon meta-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+          </div>
+          <div class="cert-status-badge verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Verified</span>
+          </div>
+        </div>
+
+        <div class="cert-info">
+          <span class="cert-issuer">Meta (via Coursera)</span>
+          <h3 class="cert-title">Meta Front-End Developer Specialization</h3>
+          <p class="cert-date">Issued: 2025 • Credential ID: META-FED-77192</p>
+          <p class="cert-summary">
+            9-course comprehensive specialization covering modern React.js, JavaScript in-depth, responsive layouts with modern CSS, Jest test automation, and UI/UX design principles.
+          </p>
+        </div>
+
+        <div class="cert-skills">
+          <span class="cert-skill-tag">React.js</span>
+          <span class="cert-skill-tag">Advanced JavaScript</span>
+          <span class="cert-skill-tag">Jest Unit Testing</span>
+          <span class="cert-skill-tag">UI/UX</span>
+        </div>
+
+        <div class="cert-footer">
+          <button class="btn btn-sm btn-outline verify-cert-btn" data-cert="meta">
+            <span>Verify Credential</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cert 3: Google Cloud -->
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon gcp-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+          </div>
+          <div class="cert-status-badge verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Verified</span>
+          </div>
+        </div>
+
+        <div class="cert-info">
+          <span class="cert-issuer">Google Cloud Skills Boost</span>
+          <h3 class="cert-title">Google Cloud Computing Foundations</h3>
+          <p class="cert-date">Issued: 2024 • Credential ID: GCCF-9021-IN</p>
+          <p class="cert-summary">
+            Demonstrates working ability to deploy infrastructure on GCP, configure Compute Engine VM instances, manage Cloud Storage buckets, and monitor workloads.
+          </p>
+        </div>
+
+        <div class="cert-skills">
+          <span class="cert-skill-tag">Google Cloud</span>
+          <span class="cert-skill-tag">Compute Engine</span>
+          <span class="cert-skill-tag">Cloud Storage</span>
+          <span class="cert-skill-tag">VPC & IAM</span>
+        </div>
+
+        <div class="cert-footer">
+          <button class="btn btn-sm btn-outline verify-cert-btn" data-cert="gcp">
+            <span>Verify Credential</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cert 4: HackerRank Problem Solving -->
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon hr-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <div class="cert-status-badge verified">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Verified</span>
+          </div>
+        </div>
+
+        <div class="cert-info">
+          <span class="cert-issuer">HackerRank Certification</span>
+          <h3 class="cert-title">Problem Solving (Intermediate & Advanced)</h3>
+          <p class="cert-date">Issued: 2024 • Credential ID: HR-PS-ADV-3104</p>
+          <p class="cert-summary">
+            Rigorous algorithmic validation evaluating dynamic programming, graph traversal, trees, asymptotic runtime complexity, and memory-optimized data structures.
+          </p>
+        </div>
+
+        <div class="cert-skills">
+          <span class="cert-skill-tag">Data Structures</span>
+          <span class="cert-skill-tag">Algorithms</span>
+          <span class="cert-skill-tag">Dynamic Programming</span>
+          <span class="cert-skill-tag">Graph Theory</span>
+        </div>
+
+        <div class="cert-footer">
+          <button class="btn btn-sm btn-outline verify-cert-btn" data-cert="hackerrank">
+            <span>Verify Credential</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Contact Section -->
+  <section id="contact" class="section">
+    <div class="section-header">
+      <span class="section-tag">Get In Touch</span>
+      <h2>Let's Build Something Together</h2>
+      <p class="section-desc">Have an open opportunity, a freelance project, or want to collaborate on the next big hackathon? Drop me a message.</p>
+    </div>
+
+    <div class="contact-container">
+      <!-- Contact Details Side -->
+      <div class="contact-info-panel">
+        <div class="contact-info-header">
+          <h3>Contact Information</h3>
+          <p>Feel free to reach out via the form or through direct contact channels below.</p>
+        </div>
+
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="contact-item-text">
+              <span class="label">Direct Email</span>
+              <a href="mailto:prakharsingh.dev@gmail.com" class="val" id="emailCopyTrigger" title="Click to copy email">prakharsingh.dev@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div class="contact-item-text">
+              <span class="label">Location</span>
+              <span class="val">India • Available for Remote & Relocation</span>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-item-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <div class="contact-item-text">
+              <span class="label">Availability Status</span>
+              <span class="val status-green">Open to Full-Time & Internship Offers</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-social-section">
+          <span class="social-heading">Connect on Social Platforms:</span>
+          <div class="contact-social-icons">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" class="social-circle-link" title="LeetCode">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-panel">
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Alex Morgan" required>
+            <span class="form-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email Address</label>
+            <input type="email" id="email" name="email" placeholder="e.g. alex@company.com" required>
+            <span class="form-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, team, or opportunity..." required></textarea>
+            <span class="form-error"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary submit-btn" id="submitBtn">
+            <span>Send Message</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+
+          <!-- Form Success Message Box -->
+          <div class="form-success-banner" id="formSuccessMessage">
+            <div class="banner-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <div>
+              <strong>Message received!</strong>
+              <p>Thank you for reaching out. I'll get back to your email shortly.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal for Certificate Verification Simulation -->
+  <div class="modal-backdrop" id="certModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="certModalTitle">Certificate Verification</h3>
+        <button class="icon-btn modal-close-btn" id="modalCloseBtn" aria-label="Close Modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="certModalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="modalOkBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Mohd Aatif. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <span class="logo-bracket">&lt;</span>Prakhar<span class="logo-accent">.dev</span><span class="logo-bracket"> /&gt;</span>
+        </div>
+        <p class="footer-tagline">Crafting fast, accessible, and scalable digital solutions.</p>
+        <ul class="footer-nav">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#hackathons">Hackathons</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Prakhar Singh. All rights reserved.</p>
+        <p class="designed-with">Built with clean HTML5, CSS3 & JavaScript</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="backToTop" class="back-to-top-btn" aria-label="Back to top" title="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
 
   <script src="script.js"></script>
 </body>
